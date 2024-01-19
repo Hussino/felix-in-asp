@@ -1,0 +1,77 @@
+﻿@using project3.Views.Shared.Components.SearchBar
+@model IEnumerable<job>
+@{
+    Layout = "_AdminDashboardLayout";
+
+    SPager pager = new SPager();
+
+    int pageNo = 0;
+
+    if(ViewBag.SearchPager != null)
+    {
+        pager = ViewBag.SearchPager;
+        pageNo = pager.CurrentPage;
+
+    }
+
+}
+
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+                            
+
+<div class="row">
+                                
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4" >Jobs</h4>
+                
+                <vc:search-bar search-pager = "@ViewBag.SearchPager" bottom-bar="false"></vc:search-bar>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                           <tr>
+                                <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerId"]"  style="color:white"> Job Id</a></th>
+                                <th scope="col"><i class="@ViewData["SortIconName"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerName"]"  style="color:white"> Job Name</a></th>
+                                <th scope="col">Company ID</th>
+                                <th scope="col">Age Range</th>
+                                <th scope="col">Gender for Job</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col"><i class="@ViewData["SortIconCity"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerCity"]"  style="color:white"> City</a> </th>
+                                <th scope="col">Work Hours</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(job jobs in Model){
+                            <tr>
+                                <th scope="row">@jobs.job_id</th>
+                                <td>@jobs.job_name</td>
+                                <td>@jobs.company_id</td>
+                                <td>@jobs.age_range</td>
+                                <td>@jobs.job_age</td>
+                                <td>@jobs.experience_years</td>
+                                <td>@jobs.city</td>
+                                <td>@jobs.work_hours</td>
+                                <td> <a asp-action="edit_job" asp-controller="Admin" asp-route-id="@jobs.job_id" style="color: #ffc600;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                    </svg></a> <b> | </b> 
+                                    <a asp-action="DeleteJob" asp-controller="Admin" asp-route-id="@jobs.job_id" style="color: #ff4040;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                    </svg></a>
+                                </td>
+                            </tr>
+                            }
+                                                        
+                        </tbody>
+                    </table>
+                     <vc:search-bar search-pager = "@ViewBag.SearchPager" bottom-bar="true"></vc:search-bar>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <!-- end colm -->
+                                
+                                
+</div>

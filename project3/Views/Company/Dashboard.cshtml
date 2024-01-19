@@ -1,0 +1,125 @@
+﻿@using project3.Views.Shared.Components.SearchBar
+@model project3.ViewModels.CompanyViewModel
+@{
+    Layout = "_DashboardLayout";
+
+}
+
+
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+<div class="row">
+
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-info mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white">Number of Jobs</h6>
+                    <h4 class="mb-3 mt-0 float-right" style="text-align:center">@Model.jobs.Count()</h4>
+                </div>
+            </div>    
+        </div>
+    </div>
+            
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white">Applications</h6>
+                    <h4 class="mb-3 mt-0 float-right" style="text-align:center">@Model.applications.Count()</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!-- end row -->
+
+<div class="row">
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Jobs</h4> 
+                <div>
+                    <div class="col-12 p-0  content-end" style="text-align:end">
+                        <form asp-controller="Company" asp-action="job_list">
+                            <span class="btn-group">
+                                <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+                                <input class="p-1 mdi-wifi-strength-2-lock btn btn-sm btn-warning" type="submit" style="color:black;" value="Search" />
+                            </span>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerId"]"  style="color:white"> Job Id</a></th>
+                                <th scope="col"><i class="@ViewData["SortIconName"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerName"]"  style="color:white"> Job Name</a></th>
+                                <th scope="col">Age Range</th>
+                                <th scope="col">Gender for Job</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col"><i class="@ViewData["SortIconCity"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerCity"]"  style="color:white"> City</a> </th>
+                                <th scope="col">Work Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(job jobs in Model.jobs){
+                            <tr>
+                                <th scope="row">@jobs.job_id</th>
+                                <td>@jobs.job_name</td>
+                                <td>@jobs.age_range</td>
+                                <td>@jobs.job_age</td>
+                                <td>@jobs.experience_years</td>
+                                <td>@jobs.city</td>
+                                <td>@jobs.work_hours</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Applications</h4> 
+
+                <div class="table-responsive">
+                    
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Application ID</th>
+                                <th scope="col">Company ID</th>
+                                <th scope="col">Job ID</th>
+                                <th scope="col">Date of App</th>
+                                <th scope="col">CV</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var app in Model.applications){
+                            <tr>
+                                <th scope="row">@app.app_id</th>
+                                <td>@app.company_id</td>
+                                <td>@app.job_id</td>
+                                <td>@app.date_of_app</td>
+                                <td>@app.CV</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+</div>
+<!-- end boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+

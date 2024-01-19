@@ -1,0 +1,14 @@
+﻿@using project3.Views.Shared.Components.SearchBar
+@model SPager
+
+<div>
+    <div class="col-12 p-0  content-end" style="text-align:end">
+        <form asp-controller="@Model.Controller" asp-action="@Model.Action">
+            <span class="btn-group">
+                <input class="form-control" type="text" name="SearchText" value="@Model.SearchText" placeholder="Search Key" />
+                <input class="p-1 mdi-wifi-strength-2-lock btn btn-sm btn-warning" type="submit" style="color:black;" value="Search" />
+            </span>
+        </form>
+    </div>
+
+</div>

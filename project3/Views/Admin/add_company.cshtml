@@ -1,0 +1,68 @@
+﻿@model company
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+<form method="post" asp-controller="Admin" asp-action="add_company" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+                
+                    <h2 class="mt-0 header-title">Add New Company</h2>
+                    <br>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Company Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="company_name">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-tel-input" class="col-sm-2 col-form-label">Company Email</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="company_email" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-number-input" class="col-sm-2 col-form-label">Phone</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="Text" asp-for="phone" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-number-input" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="Text" asp-for="password">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3">
+            
+                            <!-- Simple card -->
+                            <div class="card m-b-30">
+                                <div class="card-body">
+                                     <input class="form-control" type="file" asp-for="company_image">
+                                </div>
+                            </div>
+            
+                     </div><!-- end col -->
+
+
+                    <div class="col-xs-6">
+                        <div class="submit-holder">
+                            <button type="submit" name="submit">Add company</button>
+                        </div>
+                    </div>
+                                                
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->      
+
+</form>
+
+

@@ -1,0 +1,285 @@
+﻿@using project3.Views.Shared.Components.SearchBar
+@model project3.ViewModels.AdminViewModel
+@{
+    Layout = "_AdminDashboardLayout";
+
+    SPager pager = new SPager();
+
+    int pageNo = 0;
+
+    if(ViewBag.SearchPager != null)
+    {
+        pager = ViewBag.SearchPager;
+        pageNo = pager.CurrentPage;
+    }
+}
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-primary mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white-50">Jobs</h6>
+                    <h4 class="mb-3 mt-0 float-right">@Model.job.Count()</h4>
+                </div>                    
+            </div>
+        </div>
+    </div>
+            
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-info mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white-50">Applications</h6>
+                    <h4 class="mb-3 mt-0 float-right">@Model.applications.Count()</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-pink mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white-50">Companies</h6>
+                    <h4 class="mb-3 mt-0 float-right">@Model.company.Count()</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+    <div class="col-xl-3 col-md-6">
+        <div class="card bg-success mini-stat">
+            <div class="p-3 mini-stat-desc">
+                <div class="clearfix">
+                    <h6 class="text-uppercase mt-0 float-left text-white-50">Product Sold</h6>
+                    <h4 class="mb-3 mt-0 float-right">1890</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+<!-- end row -->
+
+<div class="row">
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Jobs</h4> 
+                <div>
+                    <div class="col-12 p-0  content-end" style="text-align:end">
+                        <form asp-controller="Admin" asp-action="job_list">
+                            <span class="btn-group">
+                                <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+                                <input class="p-1 mdi-wifi-strength-2-lock btn btn-sm btn-warning" type="submit" style="color:black;" value="Search" />
+                            </span>
+                        </form>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                               <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerId"]"  style="color:white"> Job Id</a></th>
+                                <th scope="col"><i class="@ViewData["SortIconName"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerName"]"  style="color:white"> Job Name</a></th>
+                                <th scope="col">Company ID</th>
+                                <th scope="col">Age Range</th>
+                                <th scope="col">Gender for Job</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col"><i class="@ViewData["SortIconCity"]" arial-hidden="true"></i><a asp-action="job_list" asp-route-sortExpression="@ViewData["SortPerCity"]"  style="color:white"> City</a> </th>
+                                <th scope="col">Work Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var job in  Model.job){
+                                <tr>
+                                <th scope="row">@job.job_id</th>
+                                <td>@job.job_name</td>
+                                <td>@job.company_id</td>
+                                <td>@job.age_range</td>
+                                <td>@job.job_age</td>
+                                <td>@job.experience_years</td>
+                                <td>@job.city</td>
+                                <td>@job.work_hours</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Companies</h4> 
+
+
+                <div>
+                    <div class="col-12 p-0  content-end" style="text-align:end">
+                        <form asp-controller="Admin" asp-action="company_list">
+                            <span class="btn-group">
+                                <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+                                <input class="p-1 mdi-wifi-strength-2-lock btn btn-sm btn-warning" type="submit" style="color:black;" value="Search" />
+                            </span>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Company ID</th>
+                                <th scope="col">Company Name</th>
+                                <th scope="col">Company Email</th>
+                                <th scope="col">Company Phone</th>
+                                <th scope="col">Company Password</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var company in  Model.company){
+                                <tr>
+                                <th scope="row">@company.company_id</th>
+                                <td>@company.company_name</td>
+                                <td>@company.company_email</td>
+                                <td>@company.phone</td>
+                                <td>@company.password</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>            
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Applications</h4> 
+
+                <div class="table-responsive">
+                    
+                     <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Application ID</th>
+                                <th scope="col">Company ID</th>
+                                <th scope="col">Job ID</th>
+                                <th scope="col">Date of App</th>
+                                <th scope="col">CV</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var app in Model.applications){
+                            <tr>
+                                <th scope="row">@app.app_id</th>
+                                <td>@app.company_id</td>
+                                <td>@app.job_id</td>
+                                <td>@app.date_of_app</td>
+                                <td>@app.CV</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Latest Messages</h4>
+                <div class="latest-massage">
+                    <a href="#" class="latest-message-list">
+                        <div class="border-bottom position-relative">
+                            <div class="float-left user mr-3">
+                                <h5 class="bg-primary text-center rounded-circle text-dark mt-0">v</h5>
+                            </div>
+                            <div class="message-time">
+                                <p class="m-0 text-muted">Just Now</p>
+                            </div>
+                            <div class="massage-desc">
+                                <h5 class="font-14 mt-0 text-dark">Victor Zamora</h5>
+                                <p class="text-muted">Hey! there I'm available...</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="latest-message-list">
+                        <div class="border-bottom mt-3 position-relative">
+                            <div class="float-left user mr-3">
+                                <h5 class="bg-success text-center rounded-circle text-dark mt-0">p</h5>
+                            </div>
+                            <div class="message-time">
+                                <p class="m-0 text-muted">2 Min. ago</p>
+                            </div>
+                            <div class="massage-desc">
+                                <h5 class="font-14 mt-0 text-dark">Patrick Beeler</h5>
+                                <p class="text-muted">I've finished it! See you so...</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="latest-message-list">
+                        <div class="border-bottom mt-3 position-relative">
+                            <div class="float-left user mr-3">
+                                <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle mb-3">
+                            </div>
+                            <div class="message-time">
+                                <p class="m-0 text-muted">6 Min. ago</p>
+                            </div>
+                            <div class="massage-desc">
+                                <h5 class="font-14 mt-0 text-dark">Ralph Ramirez</h5>
+                                <p class="text-muted">This theme is awesome!</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="latest-message-list">
+                        <div class="border-bottom mt-3 position-relative">
+                            <div class="float-left user mr-3">
+                                <h5 class="bg-pink text-center rounded-circle text-dark mt-0">b</h5>
+                            </div>
+                            <div class="message-time">
+                                <p class="m-0 text-muted">01:34 pm</p>
+                            </div>
+                            <div class="massage-desc">
+                                <h5 class="font-14 mt-0 text-dark">Bryan Lacy</h5>
+                                <p class="text-muted">I've finished it! See you so...</p>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="latest-message-list">
+                        <div class="mt-3 position-relative">
+                            <div class="float-left user mr-3">
+                                <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle mb-3">
+                            </div>
+                            <div class="message-time">
+                                <p class="m-0 text-muted">02:05 pm</p>
+                            </div>
+                            <div class="massage-desc">
+                                <h5 class="font-14 mt-0 text-dark">James Sorrells</h5>
+                                <p class="text-muted">Hey! there I'm available...</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            
+            </div>
+        </div>
+            
+    </div>
+    <!-- end col -->
+                                
+</div>
+<!-- end boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+

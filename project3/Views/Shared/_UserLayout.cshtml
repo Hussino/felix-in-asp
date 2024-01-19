@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/custom.css">
+</head>
+<body>
+<div id="header-holder">
+    <div class="cloud-bg"></div>
+    <nav id="nav" class="navbar navbar-full">
+        <div class="container-fluid">
+            <div class="container container-nav">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button aria-expanded="false" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" style="color:aliceblue" asp-action="Index" asp-controller="User"> <b>Felix.com</b> </a>
+                        </div>
+                        <div style="height: 1px;" role="main" aria-expanded="false" class="navbar-collapse collapse navbar-collapse-centered" id="bs">
+                            <ul class="nav navbar-nav navbar-nav-centered">
+                                <li class="nav-item"><a class="nav-link" asp-action="Index" asp-controller="User">Home</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Services</a>
+                                    <div class="dropdown-menu custom-dropdown-menu">
+                                        <div class="dropdown-items-holder">
+                                            <div class="items-with-icon">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <a href="#" class="link-with-icon" >
+                                                            <span class="icon"><img src="~/images/server1.svg" alt=""></span>
+                                                            <span class="text">Jobs</span>
+                                                        </a>
+                                                        <a href="#" class="link-with-icon">
+                                                            <span class="icon"><img src="~/images/server2.svg" alt=""></span>
+                                                            <span class="text">Recomndation</span>
+                                                        </a>
+                                                        
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6">
+                                                        <a href="#" class="link-with-icon">
+                                                            <span class="icon"><img src="~/images/server4.svg" alt=""></span>
+                                                            <span class="text">CVes</span>
+                                                        </a>
+                                                        <a href="#" class="link-with-icon">
+                                                            <span class="icon"><img src="~/images/server5.svg" alt=""></span>
+                                                            <span class="text">How to apply</span>
+                                                        </a>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="contact" asp-controller="User">Support</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="User" asp-action="about">About</a></li>
+                                        <li><a class="dropdown-item" asp-action="privacy" asp-controller="User">Privacy</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right other-navbar">                                
+                                <li class="nav-item dropdown">
+                                    <a id="login_button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="User" asp-action="user_login">User</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Company" asp-action="company_login">Company</a></li>                                        
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="register_button" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" asp-controller="User" asp-action="user_register">User</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Company" asp-action="company_register">Company</a></li>                                        
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    @RenderBody()
+</div>
+
+
+<div class="support-links container-fluid">
+    <div class="row">
+        <div class="col-sm-6 hylink-holder">
+            <div class="hylink-box">
+                <div class="icon"><img src="~/images/info.svg" alt=""></div>
+                <a asp-controller="User" asp-action="about" class="link">About Us</a>
+                <div class="text">Who we are.</div>
+            </div>
+        </div>
+        <div class="col-sm-6 hylink-holder">
+            <div class="hylink-box">
+                <div class="icon"><img src="~/images/chat.svg" alt=""></div>
+                <a asp-action="contact" asp-controller="User" class="link">Go to support center</a>
+                <div class="text">If you have any trable you can contact us and inform us about that trable.</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer container-fluid">
+    <a class="btn-go-top" href="#"><i class="hstb hstb-down-arrow"></i></a>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                <div class="footer-menu">
+                    <h4>Team</h4>
+                    <ul>
+                        <li><a asp-controller="User" asp-action="about">About us</a></li>
+                        <li><a asp-action="contact" asp-controller="User">Contact Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">
+                <div class="footer-menu">
+                    <h4>Jobs</h4>
+                    <ul>
+                        <li><a href="#">City</a></li>
+                        <li><a href="#">Company</a></li>
+                        <li><a href="#">field</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                <div class="footer-menu">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Client area</a></li>
+                        <li><a href="#">Company area</a></li>
+                        <li><a href="#">Bot answers</a></li>
+                    </ul>  
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                <div class="footer-menu custom-footer-menu">
+                    <h4>Contact us</h4>
+                    <ul class="social">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                    <ul>
+                        <li>Tel: +(967) 777 666 555</li>
+                        <li><a href="#">Chatting service</a></li>
+                        <li><a href="#">Submit a ticket</a></li>
+                        <li><a href="#">Our location</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sub-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sub-footer-menu">
+                        <ul>
+                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a asp-action="privacy" asp-controller="User">Privacy Policy</a></li>
+                        </ul>        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="copyright">© Copyright 2023 felix.com, All Rights Reserved</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/slick.min.js"></script>
+<script src="~/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿@model job
+@{
+    Layout = "_DashboardLayout";
+}
+
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+<form method="post" asp-controller="Company" asp-action="add_job" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+                
+                    <h2 class="mt-0 header-title">Add New Job</h2>
+                    <br>
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Job Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="job_name">
+                            <span asp-validation-for="job_name"></span>
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-sm-2 col-form-label">Company ID</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" readonly value="1" asp-for="company_id">
+                            <span asp-validation-for="company_id"></span>
+                        </div>
+                    </div>
+                    <br>
+                    <h2 class="mt-0 header-title">Qualifications</h2>
+                    <br>
+                    <div class="form-group row">
+                        <label for="example-tel-input" class="col-sm-2 col-form-label">Experience Years</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" asp-for="experience_years">
+                            <span asp-validation-for="experience_years"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-number-input" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="Text" asp-for="city">
+                            <span asp-validation-for="city"></span>
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-sm-2 col-form-label">Range Age</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="age_range">
+                            <span asp-validation-for="age_range"></span>
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-time-input" class="col-sm-2 col-form-label">Work hours</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="work_hours">
+                            <span asp-validation-for="work_hours"></span>
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Gender</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" asp-for="job_age">
+                                <option value="Both">Both</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <span asp-validation-for="job_age"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="job_image" class="col-sm-2 col-form-label">Job Image</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="file" asp-for="job_image">
+                            <span asp-validation-for="job_image"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <div class="submit-holder">
+                            <button type="submit" name="submit">Add Job</button>
+                        </div>
+                    </div>
+                                                
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->      
+
+</form>

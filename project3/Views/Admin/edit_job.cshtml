@@ -1,0 +1,120 @@
+﻿@model job
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+@if (Model != null)
+{
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+<form method="post" asp-controller="Admin" asp-action="edit_job" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+                
+                    <h2 class="mt-0 header-title">Edit Job</h2>
+                    <br>
+                
+                    <!-- <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Job ID</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-sm-2 col-form-label">Job ID</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="hidden" readonly value="@Model.job_id" asp-for="job_id">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-sm-2 col-form-label">Job Name</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="job_name" value="@Model.job_name">
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-sm-2 col-form-label">Company ID</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" value="@Model.company_id" asp-for="company_id">
+                        </div>
+                    </div>
+                    <br>
+                    <h2 class="mt-0 header-title">Qualifications</h2>
+                    <br>
+                    <div class="form-group row">
+                        <label for="example-tel-input" class="col-sm-2 col-form-label">Experience Years</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="number" asp-for="experience_years" value="@Model.experience_years">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="example-number-input" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="Text" asp-for="city" value="@Model.city">
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-date-input" class="col-sm-2 col-form-label">Range Age</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="age_range" value="@Model.age_range">
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label for="example-time-input" class="col-sm-2 col-form-label">Work hours</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" asp-for="work_hours" value="@Model.work_hours">
+                        </div>
+                    </div>
+                                                
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Gender</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" asp-for="job_age">
+                                <option value="@Model.job_age"> @Model.job_age</option>
+                                <option value="Both">Both</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                     <div class="form-group row">
+                        <label for="example-time-input" class="col-sm-2 col-form-label">job image</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="hidden" asp-for="job_image" value="@Model.job_image">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-3">
+            
+                            <!-- Simple card -->
+                            <div class="card m-b-30">
+                                <img class="card-img-top img-fluid" src="~/JobImages/@Model.job_image" alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title font-16 mt-0">Job Image</h4>
+                                    <p class="card-text" asp-for="job_image">@Model.job_image</p>
+                                     <input class="form-control" type="file" asp-for="job_image">
+                                </div>
+                            </div>
+            
+                     </div><!-- end col -->
+
+
+                    <div class="col-xs-6">
+                        <div class="submit-holder">
+                            <button type="submit" name="submit">Edit Job</button>
+                        </div>
+                    </div>
+                                                
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->      
+
+</form>
+}else{<span><h1>Error</h1></span>}

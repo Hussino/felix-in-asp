@@ -1,0 +1,50 @@
+﻿@model project3.ViewModels.ApplicationViewModel
+@{
+    Layout = "_UserLayout";
+}
+
+<div id="top-content" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" style="text-align: center">
+                    <div class="page-title">Details</div>
+                    <div class="page-subtitle">About The Job</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-controller="User" asp-action="JobDetails" enctype="multipart/form-data">
+<div class="blog container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="post-box summary">
+                    @*<div class="post-photo">
+                        <img src="~/images/post-photo2.jpg" alt="">
+                    </div>*@
+                    <div class="post-title">@Model.job.job_name</div>
+                    <div class="post-summary">
+                        <ul class="list-unstyled">
+                            <li>Age requierd for this job is: @Model.job.age_range</li>
+                            <li>Gender requierd for this job is: @Model.job.job_age </li>
+                            <li>Company name that offer this job is: @Model.job.company_id</li>
+                            <li>City of job: @Model.job.city</li>
+                            
+                        </ul>
+                    </div>
+                    <div class="post-link">
+                            <input hidden readonly id="job_id" name="job_id" value="@Model.job.job_id" asp-for="application.job_id"/>
+                            <input hidden readonly id="user_id" name="user_id" value="1" asp-for="application.user_id"/>
+                            <input hidden readonly id="company_id" name="company_id" value="@Model.job.company_id" asp-for="application.company_id"/>
+                            <input hidden readonly id="date_of_app" name="date_of_app" value="@DateTime.Now.ToString("yyyy-MM-dd")" asp-for="application.date_of_app"/>
+                            <input type="file" name="CV" id="CV "asp-for="application.CV" class="hbtn hbtn-blue hbtn-lg container"/>
+                            
+                        <button  type="submit" class="hbtn hbtn-blue hbtn-lg">Apply</button>
+                    </div><!-- <input type="file" class="hbtn hbtn-blue hbtn-lg container" > -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

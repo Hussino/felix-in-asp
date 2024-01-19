@@ -1,0 +1,61 @@
+﻿@using project3.Views.Shared.Components.SearchBar
+@model IEnumerable<Application>
+@{
+    Layout = "_DashboardLayout";
+
+    SPager pager = new SPager();
+
+    int pageNo = 0;
+
+    if(ViewBag.SearchPager != null)
+    {
+        pager = ViewBag.SearchPager;
+        pageNo = pager.CurrentPage;
+
+    }
+
+}
+
+<!-- boooooooooooooooooooooooooooooooooooooooooooooooooody -->
+                            
+
+<div class="row">
+                                
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4" >Applications</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                           <tr>
+                                <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="application_list" asp-route-sortExpression="@ViewData["SortPerAppId"]"  style="color:white"> Application Id</a></th>
+                                <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="application_list" asp-route-sortExpression="@ViewData["SortPerCompId"]"  style="color:white"> Company Id</a></th>
+                                <th scope="col"><i class="@ViewData["SortIconId"]" arial-hidden="true"></i><a asp-action="application_list" asp-route-sortExpression="@ViewData["SortPerJobId"]"  style="color:white"> Job Id</a></th>
+                                <th scope="col">Date of App</th>
+                                <th scope="col">CV</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(Application app in Model){
+                            <tr>
+                                <th scope="row">@app.app_id</th>
+                                <td>@app.company_id</td>
+                                <td>@app.job_id</td>
+                                <td>@app.date_of_app</td>
+                                <td>@app.CV</td>
+                            </tr>
+                            }
+                                                        
+                        </tbody>
+                    </table>
+                     <vc:search-bar search-pager = "@ViewBag.SearchPager" bottom-bar="true"></vc:search-bar>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    <!-- end colm -->
+                                
+                                
+</div>
